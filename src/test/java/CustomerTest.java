@@ -10,7 +10,8 @@ public class CustomerTest {
     private Customer customer;
     private ElectricCar electricCar;
     private PetrolCar petrolCar;
-    private ArrayList<VehicleType> carStuff;
+    private ArrayList<VehicleType> cars;
+    private Part engine;
 
 
     @Before
@@ -18,14 +19,20 @@ public class CustomerTest {
         customer = new Customer("Victoria", 100000.00);
         electricCar = new ElectricCar("Hyundai", "Orange", 2999.99);
         petrolCar = new PetrolCar("BMW", "Blue", 40000.00);
-        carStuff = new ArrayList<>();
+        cars = new ArrayList<>();
+        engine = new Engine("EN123", 349.99);
 
     }
 
     @Test
-    public void can_add_purchased_thing_to_list(){
+    public void can_increase_number_of_things_bought_Car(){
         customer.addItem(petrolCar);
-        assertEquals(1, customer.getAmountOfCars());
+        assertEquals(1, customer.getNumberOfItemsBought());
+    }
+
+    @Test
+    public void can_increase_number_of_things_bought_Part(){
+        customer.addItem(engine);
     }
 
     @Test

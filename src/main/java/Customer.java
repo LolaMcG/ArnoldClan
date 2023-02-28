@@ -1,7 +1,6 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Customer {
+public class Customer implements IPurchase {
 
     private String name;
     private double cash;
@@ -17,8 +16,7 @@ public class Customer {
         stuffBought.add(item);
     }
 
-
-    public int getAmountOfCars() {
+    public int getNumberOfItemsBought() {
         return stuffBought.size();
     }
 
@@ -27,6 +25,7 @@ public class Customer {
     }
 
     public void buySomething(Buyable item){
+        addItem(item);
         cash -= item.getPrice();
     }
 }
