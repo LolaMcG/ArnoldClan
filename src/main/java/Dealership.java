@@ -83,6 +83,7 @@ public class Dealership implements IPurchase {
                 addSparePartToStock((Part) item);
             } else {
                 System.out.println("Invalid transaction");
+//                throw new IllegalArgumentException("You're trying to buy something that the dealership doesn't stock");
                 return;
             }
             decreaseMoneyInTill(itemPrice);
@@ -97,12 +98,13 @@ public class Dealership implements IPurchase {
                 removeCarFromStock((VehicleType) item);
             } else if (item instanceof Part){
                 removePartFromStock((Part) item);
-            } else{
+        } else{
                 System.out.println("Customer has insufficient funds to make the purchase");
                 return;
             }
             addMoneyToTill(item.getPrice());
-            customer.addItem(item);
+//            customer.addItem(item); necessary???
+
         }
     }
 }
